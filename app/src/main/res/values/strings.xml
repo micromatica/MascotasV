@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mascotas</string>
+    <string name="mascotas">Mascotas</string>
+    <string name="menu_delete">Delete</string>
+    <string name="titulo">Mascotas con 5 puntos</string>
+    <string name="tituloTopFive">Top five</string>
+</resources>
