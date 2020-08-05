@@ -19,9 +19,9 @@ public class ActivityTopFive extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_five);
 
-        Bundle parametros = getIntent().getExtras();
+        //Bundle parametros = getIntent().getExtras();
 
-         mascotas = (ArrayList<MascotaModel>) getIntent().getSerializableExtra("listaTopFive");
+         //mascotas = (ArrayList<MascotaModel>) getIntent().getSerializableExtra("listaTopFive");
 
         listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
 
@@ -30,7 +30,10 @@ public class ActivityTopFive extends AppCompatActivity {
 
         listaMascotas.setLayoutManager(llm);
 
+        mascotas = new ArrayList<MascotaModel>();
         inicializarAdaptador();
+        inicializarListaMascotas();
+
 
         // Toast.makeText(this, mascotas.get(1).getNombre(),Toast.LENGTH_LONG).show();
     }
@@ -40,6 +43,14 @@ public class ActivityTopFive extends AppCompatActivity {
     public void inicializarAdaptador(){
         adaptador = new MascotaAdapter(mascotas,this);
         listaMascotas.setAdapter(adaptador);
+    }
+
+    public void inicializarListaMascotas(){
+        mascotas.add(new MascotaModel(R.drawable.mascota01,"Perro 1",0,R.drawable.huesoblanco));
+        mascotas.add(new MascotaModel(R.drawable.mascota02,"Perro 2",1,R.drawable.huesoblanco));
+        mascotas.add(new MascotaModel(R.drawable.mascota03,"Perro 3",2,R.drawable.huesoblanco));
+        mascotas.add(new MascotaModel(R.drawable.mascota04,"Perro 4",3,R.drawable.huesoblanco));
+        mascotas.add(new MascotaModel(R.drawable.mascota05,"Perro 5",4,R.drawable.huesoblanco));
     }
 
 }

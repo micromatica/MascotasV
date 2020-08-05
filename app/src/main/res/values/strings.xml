@@ -4,4 +4,8 @@
     <string name="menu_delete">Delete</string>
     <string name="titulo">Mascotas con 5 puntos</string>
     <string name="tituloTopFive">Top five</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="practica">Mascotas - tarea semana 4</string>
+    <string name="acercaDe">Desarrollado por: José Pérez Morales</string>
 </resources>

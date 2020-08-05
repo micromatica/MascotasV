@@ -8,5 +8,10 @@
         app:showAsAction="ifRoom"
         >
     </item>
-
+    <item android:id="@+id/mnuContacto"
+          android:title="Contacto">
+    </item>
+    <item android:id="@+id/mnuAcercaDe"
+          android:title="Acerca de">
+    </item>
 </menu>
