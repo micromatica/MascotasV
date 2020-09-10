@@ -7,11 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import mx.com.joseperez.mascotas.db.BaseDatos;
 
 public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
 
@@ -21,6 +24,7 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     public MascotaAdapter(ArrayList<MascotaModel> mascotas, Activity activity){
         this.mascotas = mascotas;
         this.activity = activity;
+
     }
 
     @NonNull
@@ -36,14 +40,17 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
         mascotaViewHolder.imgFoto.setImageResource(mascota.getFoto());
         mascotaViewHolder.tvNombre.setText(mascota.getNombre());
         mascotaViewHolder.tvMeGusta.setText(String.valueOf(mascota.getMeGusta()));
-        mascotaViewHolder.imgHuesoBlanco.setImageResource(mascota.getHuedoMeGusta());
 
-        mascotaViewHolder.imgHuesoBlanco.setOnClickListener(new View.OnClickListener(){
+        final int mascotaID = mascota.getId();
+
+        mascotaViewHolder.imgHuesoBlanco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int meGusta = mascota.getMeGusta();
-                mascota.setMeGusta(++meGusta);
-                mascotaViewHolder.tvMeGusta.setText(String.valueOf(meGusta));
+                BaseDatos bd = new BaseDatos(v.getContext());
+                bd.insertarMascotaLike(mascotaID);
+
+                int likes = bd.getMascotaLikes(mascotaID);
+                mascotaViewHolder.tvMeGusta.setText(String.valueOf(likes));
             }
         });
     }

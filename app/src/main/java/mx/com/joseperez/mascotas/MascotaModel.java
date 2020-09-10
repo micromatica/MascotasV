@@ -3,16 +3,30 @@ package mx.com.joseperez.mascotas;
 import java.io.Serializable;
 
 public class MascotaModel implements Serializable {
+    private int id;
     private int foto;
     private String nombre;
     private int meGusta;
     private int huedoMeGusta;
 
-    public MascotaModel(int foto, String nombre, int meGusta, int huesoMeGusta) {
+    public MascotaModel(int od, int foto, String nombre, int meGusta, int huesoMeGusta) {
+        this.id = id;
         this.foto = foto;
         this.nombre = nombre;
         this.meGusta = meGusta;
         this.huedoMeGusta = huesoMeGusta;
+    }
+
+    public MascotaModel(){
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getFoto() {

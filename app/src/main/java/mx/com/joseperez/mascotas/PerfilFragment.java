@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import mx.com.joseperez.mascotas.db.BaseDatos;
 
 public class PerfilFragment extends Fragment {
 
@@ -19,6 +22,10 @@ public class PerfilFragment extends Fragment {
     RecyclerView miMascotaList;;
 
     View v;
+
+    public PerfilFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,17 +52,9 @@ public class PerfilFragment extends Fragment {
     }
 
     private void inicializarMiMascotaList(){
-        //mascotas.add(new MascotaModel(R.drawable.mascota01,"Perro 1",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 1",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 2",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 3",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 4",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 5",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 6",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 7",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 8",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 9",0,R.drawable.huesoblanco));
-        miMascota.add(new MascotaModel(R.drawable.mascota01,"foto 10",0,R.drawable.huesoblanco));
+        BaseDatos db = new BaseDatos(getContext());
+        miMascota = db.cargarMascotas();
+        Toast.makeText(this.getContext(),"PERFIL: " + String.valueOf(miMascota.size()),Toast.LENGTH_LONG).show();
     }
 
 }

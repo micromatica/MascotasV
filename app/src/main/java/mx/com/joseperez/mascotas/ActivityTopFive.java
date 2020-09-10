@@ -5,40 +5,37 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import mx.com.joseperez.mascotas.db.BaseDatos;
 
 public class ActivityTopFive extends AppCompatActivity {
 
     ArrayList<MascotaModel> mascotas;
     private RecyclerView listaMascotas;
+    public MascotaAdapter adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_five);
 
-        //Bundle parametros = getIntent().getExtras();
-
-         //mascotas = (ArrayList<MascotaModel>) getIntent().getSerializableExtra("listaTopFive");
-
-        listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
+        //recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mascotas = new ArrayList<MascotaModel>();
+        listaMascotas = (RecyclerView) findViewById(R.id.rvTopFive);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         listaMascotas.setLayoutManager(llm);
 
-        mascotas = new ArrayList<MascotaModel>();
-        inicializarAdaptador();
         inicializarListaMascotas();
+        inicializarAdaptador();
 
-
-        // Toast.makeText(this, mascotas.get(1).getNombre(),Toast.LENGTH_LONG).show();
     }
-
-    public MascotaAdapter adaptador;
 
     public void inicializarAdaptador(){
         adaptador = new MascotaAdapter(mascotas,this);
@@ -46,11 +43,8 @@ public class ActivityTopFive extends AppCompatActivity {
     }
 
     public void inicializarListaMascotas(){
-        mascotas.add(new MascotaModel(R.drawable.mascota01,"Perro 1",0,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota02,"Perro 2",1,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota03,"Perro 3",2,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota04,"Perro 4",3,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota05,"Perro 5",4,R.drawable.huesoblanco));
+        BaseDatos db = new BaseDatos(this);
+        mascotas = db.cargarMascotas();
     }
 
 }

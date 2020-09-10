@@ -16,16 +16,28 @@
         android:textSize="@dimen/sizeTextTitulos">
     </TextView>
 
-    <RelativeLayout
+    <!--RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMascotas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-    </RelativeLayout>
+    </RelativeLayout-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlRecyclerview">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTopFive"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -47,6 +47,7 @@
                         android:text="nombre"
                         >
                     </TextView>
+
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"

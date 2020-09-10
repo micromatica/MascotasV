@@ -33,22 +33,7 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.PerfilView
     public void onBindViewHolder(@NonNull final PerfilViewHolder perfilViewHolder, int position) {
         final MascotaModel mascota = mascotas.get(position);
         perfilViewHolder.imgFoto.setImageResource(mascota.getFoto());
-        // Comentario para que no salga el hueso blanco y leyenda me gusta
-        // pues no se debe presentar
-        //perfilViewHolder.tvNombre.setText(mascota.getNombre());
-        //perfilViewHolder.tvMeGusta.setText(String.valueOf(mascota.getMeGusta()));
-        //perfilViewHolder.imgHuesoBlanco.setImageResource(mascota.getHuedoMeGusta());
-/*
-        perfilViewHolder.imgHuesoBlanco.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                int meGusta = mascota.getMeGusta();
-                mascota.setMeGusta(++meGusta);
-                perfilViewHolder.tvMeGusta.setText(String.valueOf(meGusta));
-            }
-        });
-
- */
+        perfilViewHolder.tvMeGusta.setText(String.valueOf(mascota.getMeGusta()));
     }
 
     @Override

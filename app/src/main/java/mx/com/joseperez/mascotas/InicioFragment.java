@@ -13,8 +13,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+
+import mx.com.joseperez.mascotas.db.BaseDatos;
 
 public class InicioFragment extends Fragment {
 
@@ -46,32 +51,6 @@ public class InicioFragment extends Fragment {
         return (v);
     }
 
-    /*
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        CoordinatorLayout cordinatorLayout = (CoordinatorLayout) v.findViewById(R.id.coordinatorLayoutID);
-        Intent intent;
-        switch (item.getItemId()){
-            case R.id.mTopFive:
-                //Intent intent = new Intent(this,ActivityTopFive.class);
-                intent = new Intent(this,ActivityTopFive.class);
-                intent.putExtra("listaTopFive",mascotas);
-                startActivity(intent);
-                break;
-            case R.id.mnuContacto:
-                intent = new Intent(this,ContactoActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.mnuAcercaDe:
-                //Snackbar.make(cordinatorLayout,"Acerca de...",Snackbar.LENGTH_LONG).show();
-                intent = new Intent(this,AcercaDeActivity.class);
-                startActivity(intent);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-     */
-
     public MascotaAdapter adaptador;
 
     public void inicializarAdaptador(){
@@ -80,11 +59,8 @@ public class InicioFragment extends Fragment {
     }
 
     public void inicializarListaMascotas(){
-        mascotas.add(new MascotaModel(R.drawable.mascota01,"Perro 1",0,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota02,"Perro 2",1,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota03,"Perro 3",2,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota04,"Perro 4",3,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota05,"Perro 5",4,R.drawable.huesoblanco));
+        BaseDatos db = new BaseDatos(getContext());
+        mascotas = db.cargarMascotas();
     }
 
 }

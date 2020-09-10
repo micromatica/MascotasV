@@ -23,6 +23,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
+import mx.com.joseperez.mascotas.db.BaseDatos;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPager();
 
         mascotas = new ArrayList<MascotaModel>();
+
         //listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
 /*
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -77,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         switch (item.getItemId()){
             case R.id.mTopFive:
-                //Intent intent = new Intent(this,ActivityTopFive.class);
                 intent = new Intent(this,ActivityTopFive.class);
                 intent.putExtra("listaTopFive",mascotas);
                 startActivity(intent);
@@ -106,23 +108,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*
-    public MascotaAdapter adaptador;
-
-    public void inicializarAdaptador(){
-        adaptador = new MascotaAdapter(mascotas,this);
-        listaMascotas.setAdapter(adaptador);
-    }
-
-    public void inicializarListaMascotas(){
-        mascotas.add(new MascotaModel(R.drawable.mascota01,"Perro 1",0,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota02,"Perro 2",1,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota03,"Perro 3",2,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota04,"Perro 4",3,R.drawable.huesoblanco));
-        mascotas.add(new MascotaModel(R.drawable.mascota05,"Perro 5",4,R.drawable.huesoblanco));
-    }
-*/
 
     // Tabs
     private ArrayList<Fragment> agregarFragments(){
