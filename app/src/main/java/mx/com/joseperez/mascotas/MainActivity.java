@@ -26,12 +26,7 @@ import java.util.zip.Inflater;
 import mx.com.joseperez.mascotas.db.BaseDatos;
 
 public class MainActivity extends AppCompatActivity {
-
-
     ArrayList<MascotaModel> mascotas;
-
-    // private RecyclerView listaMascotas;
-
 
     TabLayout tablayout;
     ViewPager viewpager;
@@ -40,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BaseDatos db = new BaseDatos(this);
+        // Si la tabla está vacia, inserta las mascotas
+        if(db.cargarMascotas().size() == 0)
+            db.insertarCincoMascotas();
 
         agragarFloatingActionButton();
 
@@ -55,16 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         mascotas = new ArrayList<MascotaModel>();
 
-        //listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
-/*
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        listaMascotas.setLayoutManager(llm);
-
-        inicializarListaMascotas();
-        inicializarAdaptador();
-         */
     }
 
     @Override
